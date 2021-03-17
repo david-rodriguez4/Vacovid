@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Login">
+    android:background="@color/black"
+    tools:context=".Paciente">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="363dp"
+        android:layout_height="279dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="25dp"
@@ -44,6 +45,34 @@
 
 
             </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+
+                <EditText
+                    android:id="@+id/etFechaInscripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="@string/fechaInscripcion"
+                    android:inputType="date"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_fechaInscripcion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="@string/guardar"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                app:backgroundTint="#673AB7" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

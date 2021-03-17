@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -28,6 +29,7 @@ public class Registro extends AppCompatActivity {
         EditText txtclave = (EditText) findViewById(R.id.etecontraseña);
         EditText txtnumero = (EditText) findViewById(R.id.etenumero);
         EditText txtdocumento = (EditText) findViewById(R.id.etedocumento);
+        Spinner sRol = (Spinner) findViewById(R.id.roles);
         TextView login = (TextView) findViewById(R.id.txtsignin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +48,16 @@ public class Registro extends AppCompatActivity {
                 String clave = txtclave.getText().toString();
                 String numero = txtnumero.getText().toString();
                 String documento = txtdocumento.getText().toString();
+                String roles = String.valueOf(sRol.getSelectedItem());
+                int rol = 3;
 
-                if (nombre.equals("") || correo.equals("") || clave.equals("") || numero.equals("") || documento.equals("")) {
+                if (roles.equals("Paciente")) {
+                    rol = 0;
+                } else if (roles.equals("Personal de salud")) {
+                    rol = 1;
+                }
+
+                if (nombre.equals("") || correo.equals("") || clave.equals("") || numero.equals("") || documento.equals("") || rol == 3) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(Registro.this);
                     alerta.setMessage("Debe llenar todos los campos").setNegativeButton("Reintentar", null).create().show();
                 } else {
@@ -72,7 +82,7 @@ public class Registro extends AppCompatActivity {
                         }
                     };
 
-                    RegistroRequest r = new RegistroRequest(nombre, correo, clave, numero, documento, respuesta);
+                    RegistroRequest r = new RegistroRequest(nombre, correo, clave, numero, documento, rol, respuesta);
                     RequestQueue cola = Volley.newRequestQueue(Registro.this);
                     cola.add(r);
                 }

@@ -4,11 +4,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -26,6 +26,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         EditText txtdocumento = (EditText) findViewById(R.id.etedoc);
         EditText txtclave = (EditText) findViewById(R.id.etcontraseña);
+        Spinner sRol = (Spinner) findViewById(R.id.roleslog);
         TextView registro = (TextView) findViewById(R.id.txtsignup);
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,8 +43,16 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String documento = txtdocumento.getText().toString();
                 String clave = txtclave.getText().toString();
+                String roles = String.valueOf(sRol.getSelectedItem());
+                int rol = 3;
 
-                if (documento.equals("") || clave.equals("")) {
+                if (roles.equals("Paciente")) {
+                    rol = 0;
+                } else if (roles.equals("Personal de salud")) {
+                    rol = 1;
+                }
+
+                if (documento.equals("") || clave.equals("") || rol == 3) {
                     AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
                     alerta.setMessage("Debe llenar todos los campos").setNegativeButton("Reintentar", null).create().show();
                 } else {
@@ -56,10 +65,25 @@ public class Login extends AppCompatActivity {
                                 boolean ok = jsonrespuesta.getBoolean("success");
                                 if (ok == true) {
                                     String nombre = jsonrespuesta.getString("nombre");
-                                    Intent bienvenido = new Intent(Login.this, Principal.class);
-                                    bienvenido.putExtra("nombre", nombre);
-                                    Login.this.startActivity(bienvenido);
-                                    Login.this.finish();
+                                    String documento = jsonrespuesta.getString("documento");
+                                    String rol = jsonrespuesta.getString("rol");
+
+                                    if (rol.equals("0")) {
+                                        Intent paciente = new Intent(Login.this, Paciente.class);
+                                        paciente.putExtra("nombre", nombre);
+                                        paciente.putExtra("rol", rol);
+                                        paciente.putExtra("documento", documento);
+                                        Login.this.startActivity(paciente);
+                                        Login.this.finish();
+                                    } else if (rol.equals("1")) {
+                                        Intent personal = new Intent(Login.this, Personal.class);
+                                        personal.putExtra("nombre", nombre);
+                                        personal.putExtra("rol", rol);
+                                        personal.putExtra("documento", documento);
+                                        Login.this.startActivity(personal);
+                                        Login.this.finish();
+                                    }
+
                                 } else {
                                     AlertDialog.Builder alerta = new AlertDialog.Builder(Login.this);
                                     alerta.setMessage("El documento o la contraseña no coinciden").setNegativeButton("Reintentar", null).create().show();
@@ -70,7 +94,7 @@ public class Login extends AppCompatActivity {
                         }
                     };
 
-                    LoginRequest r = new LoginRequest(documento, clave, respuesta);
+                    LoginRequest r = new LoginRequest(documento, clave, rol, respuesta);
                     RequestQueue cola = Volley.newRequestQueue(Login.this);
                     cola.add(r);
                 }

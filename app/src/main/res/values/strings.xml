@@ -14,4 +14,11 @@
     <string name="registrate">Registrarse</string>
     <string name="iniciar_sesi_n">Iniciar sesión</string>
     <string name="iniciar">Iniciar sesión</string>
+    <string-array name="roles">
+        <item>Paciente</item>
+        <item>Personal de salud</item>
+    </string-array>
+    <string name="fechaInscripcion">Seleccione una fecha</string>
+    <string name="guardar">Guardar</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package co.edu.unipiloto.vacovid;
 
-import com.android.volley.AuthFailureError;
+import androidx.annotation.Nullable;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
@@ -8,19 +9,17 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RegistroRequest extends StringRequest {
+public class InscripcionRequest extends StringRequest {
     private static final String ruta = "https://davidfrodriguezc.000webhostapp.com/registro.php";
     private Map<String, String> parametros;
 
-    public RegistroRequest(String nombre, String correo, String clave, String numero, String documento, int rol, Response.Listener<String> listener) {
+    public InscripcionRequest(String id, String id_paciente, String id_personal, String fecha_inscripcion, Response.Listener<String> listener) {
         super(Request.Method.POST, ruta, listener, null);
         parametros = new HashMap<>();
-        parametros.put("nombre", nombre + "");
-        parametros.put("correo", correo + "");
-        parametros.put("clave", clave + "");
-        parametros.put("numero", numero + "");
-        parametros.put("documento", documento + "");
-        parametros.put("rol", rol + "");
+        parametros.put("id", id + "");
+        parametros.put("id_paciente", id_paciente + "");
+        parametros.put("id_personal", id_personal + "");
+        parametros.put("fecha_inscripcion", fecha_inscripcion + "");
     }
 
     @Override
