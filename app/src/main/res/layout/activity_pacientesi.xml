@@ -56,7 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginTop="4dp"
-                    android:text="Ya tiene una cita asignada"
+                    android:text=""
                     android:textColor="#FF673AB7"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginTop="10dp"
-                    android:text="Ya tiene una cita asignada"
+                    android:text=""
                     android:textColor="#FF673AB7"
                     android:textSize="20sp"
                     android:textStyle="bold" />
