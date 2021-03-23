@@ -67,14 +67,31 @@ public class Login extends AppCompatActivity {
                                     String nombre = jsonrespuesta.getString("nombre");
                                     String documento = jsonrespuesta.getString("documento");
                                     String rol = jsonrespuesta.getString("rol");
+                                    String fecha = jsonrespuesta.getString("fecha");
 
                                     if (rol.equals("0")) {
-                                        Intent paciente = new Intent(Login.this, Paciente.class);
-                                        paciente.putExtra("nombre", nombre);
-                                        paciente.putExtra("rol", rol);
-                                        paciente.putExtra("documento", documento);
-                                        Login.this.startActivity(paciente);
-                                        Login.this.finish();
+                                        if (fecha.equals("si")) {
+                                            String fecha1 = jsonrespuesta.getString("fechauno");
+                                            String fecha2 = jsonrespuesta.getString("fechados");
+                                            String hora = jsonrespuesta.getString("hora");
+                                            Intent pacienteAsignado = new Intent(Login.this, PacienteAsignado.class);
+                                            pacienteAsignado.putExtra("nombre", nombre);
+                                            pacienteAsignado.putExtra("rol", rol);
+                                            pacienteAsignado.putExtra("documento", documento);
+                                            pacienteAsignado.putExtra("fechauno", fecha1);
+                                            pacienteAsignado.putExtra("fechados", fecha2);
+                                            pacienteAsignado.putExtra("hora", hora);
+                                            Login.this.startActivity(pacienteAsignado);
+                                            Login.this.finish();
+                                        }
+                                        else if (fecha.equals("no")) {
+                                            Intent pacienteNoAsignado = new Intent(Login.this, PacienteNoAsignado.class);
+                                            pacienteNoAsignado.putExtra("nombre", nombre);
+                                            pacienteNoAsignado.putExtra("rol", rol);
+                                            pacienteNoAsignado.putExtra("documento", documento);
+                                            Login.this.startActivity(pacienteNoAsignado);
+                                            Login.this.finish();
+                                        }
                                     } else if (rol.equals("1")) {
                                         Intent personal = new Intent(Login.this, Personal.class);
                                         personal.putExtra("nombre", nombre);

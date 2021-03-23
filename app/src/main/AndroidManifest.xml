@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Paciente" />
+        <activity android:name=".PacienteNoAsignado" />
+        <activity android:name=".PacienteAsignado" />
     </application>
 
 </manifest>

@@ -20,5 +20,6 @@
     </string-array>
     <string name="fechaInscripcion">Seleccione una fecha</string>
     <string name="guardar">Guardar</string>
+    <string name="horaInscripcion">Seleccione una hora</string>
 
 </resources>

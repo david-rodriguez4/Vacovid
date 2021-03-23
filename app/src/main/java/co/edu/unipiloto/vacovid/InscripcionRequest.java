@@ -10,16 +10,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InscripcionRequest extends StringRequest {
-    private static final String ruta = "https://davidfrodriguezc.000webhostapp.com/registro.php";
+    private static final String ruta = "https://davidfrodriguezc.000webhostapp.com/inscripcion.php";
     private Map<String, String> parametros;
 
-    public InscripcionRequest(String id, String id_paciente, String id_personal, String fecha_inscripcion, Response.Listener<String> listener) {
+    public InscripcionRequest(String fecha, String hora, String id_paciente, Response.Listener<String> listener) {
         super(Request.Method.POST, ruta, listener, null);
         parametros = new HashMap<>();
-        parametros.put("id", id + "");
+        parametros.put("fecha", fecha + "");
+        parametros.put("hora", hora + "");
         parametros.put("id_paciente", id_paciente + "");
-        parametros.put("id_personal", id_personal + "");
-        parametros.put("fecha_inscripcion", fecha_inscripcion + "");
     }
 
     @Override
