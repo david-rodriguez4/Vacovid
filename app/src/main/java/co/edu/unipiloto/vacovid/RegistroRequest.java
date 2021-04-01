@@ -12,7 +12,7 @@ public class RegistroRequest extends StringRequest {
     private static final String ruta = "https://davidfrodriguezc.000webhostapp.com/registro.php";
     private Map<String, String> parametros;
 
-    public RegistroRequest(String nombre, String correo, String clave, String numero, String documento, int rol, Response.Listener<String> listener) {
+    public RegistroRequest(String nombre, String correo, String clave, String numero, String documento, Response.Listener<String> listener) {
         super(Request.Method.POST, ruta, listener, null);
         parametros = new HashMap<>();
         parametros.put("nombre", nombre + "");
@@ -20,7 +20,6 @@ public class RegistroRequest extends StringRequest {
         parametros.put("clave", clave + "");
         parametros.put("numero", numero + "");
         parametros.put("documento", documento + "");
-        parametros.put("rol", rol + "");
     }
 
     @Override

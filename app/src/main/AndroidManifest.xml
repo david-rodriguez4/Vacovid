@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vacovid">
-        <activity android:name=".Personal"></activity>
-        <activity android:name=".Registro" />
+        <activity android:name=".RegistroEPS"></activity>
+        <activity android:name=".RegistroPersonal" />
+        <activity android:name=".TipoUsuario" />
+        <activity android:name=".Personal" />
+        <activity android:name=".RegistroPaciente" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,8 +18,23 @@
         <item>Paciente</item>
         <item>Personal de salud</item>
     </string-array>
+    <string-array name="ocupacion">
+        <item>Salud de primera línea</item>
+        <item>Salud</item>
+        <item>Empleado</item>
+        <item>Independiente</item>
+        <item>Estudiante</item>
+        <item>Fuerza pública</item>
+        <item>Educador</item>
+    </string-array>
     <string name="fechaInscripcion">Seleccione una fecha</string>
+    <string name="fechaNacimiento">Seleccione una fecha</string>
+    <string name="ocupacion">Ocupacion</string>
+    <string name="fechanacimiento">Fecha de nacimiento</string>
     <string name="guardar">Guardar</string>
     <string name="horaInscripcion">Seleccione una hora</string>
+    <string name="genero">Genero</string>
+    <string name="generoH">Hombre</string>
+    <string name="generoM">Mujer</string>
 
 </resources>
